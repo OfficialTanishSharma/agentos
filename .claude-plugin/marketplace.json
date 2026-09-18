@@ -1,0 +1,19 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "agentos-marketplace",
+  "description": "Local-first persistent memory for AI coding agents.",
+  "owner": {
+    "name": "Tanish Sharma",
+    "url": "https://github.com/OfficialTanishSharma"
+  },
+  "plugins": [
+    {
+      "name": "agentos",
+      "source": {
+        "source": "github",
+        "repo": "OfficialTanishSharma/agentos"
+      },
+      "description": "Local-first persistent memory MCP server. SQLite FTS5, zero dependencies."
+    }
+  ]
+}

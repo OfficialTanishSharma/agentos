@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "agentos",
+  "displayName": "AgentOS",
+  "version": "0.1.0",
+  "description": "Local-first persistent memory for AI coding agents. SQLite FTS5, zero dependencies.",
+  "author": {
+    "name": "Tanish Sharma",
+    "url": "https://github.com/OfficialTanishSharma"
+  },
+  "repository": "https://github.com/OfficialTanishSharma/agentos",
+  "license": "MIT",
+  "keywords": ["memory", "sqlite", "mcp", "claude-code"]
+}

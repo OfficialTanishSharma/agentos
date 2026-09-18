@@ -9,9 +9,6 @@
 # Local AgentOS state
 .agentos/
 
-# Local MCP configuration
-.mcp.json
-
 # Editors and IDEs
 .vscode/
 .idea/
@@ -30,3 +27,9 @@ manual-test.db
 manual-test.db-shm
 manual-test.db-wal
 manual-test.db*
+
+# MCP registry / plugin publishing artifacts
+.mcpregistry_*_token
+mcp-publisher
+mcp-publisher.exe
+server.json
