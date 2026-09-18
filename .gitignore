@@ -1,37 +1,32 @@
 # Rust build output
 /target/
 
-# Local AgentOS data
-/.agentos/
+# AgentOS databases
 *.db
 *.db-shm
 *.db-wal
-*.sqlite
-*.sqlite3
+
+# Local AgentOS state
+.agentos/
 
 # Local MCP configuration
 .mcp.json
-
-# Environment files
-.env
-.env.*
 
 # Editors and IDEs
 .vscode/
 .idea/
 
-# OS files
+# Operating-system files
 .DS_Store
 Thumbs.db
 
-# Temp
-*.tmp
+# Logs and temporary files
 *.log
-*.bak
+*.tmp
 
-# Manual test files
+# Manual MCP testing
 requests.jsonl
 manual-test.db
 manual-test.db-shm
 manual-test.db-wal
-test-data/
+manual-test.db*
