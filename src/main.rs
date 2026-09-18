@@ -17,7 +17,6 @@ struct SearchArgs {
     query: String,
     #[serde(default = "default_limit")]
     limit: u32,
-    project: Option<String>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -26,7 +25,6 @@ struct RememberArgs {
     body: String,
     #[serde(default)]
     tags: Vec<String>,
-    project: Option<String>,
 }
 
 fn default_limit() -> u32 {
@@ -121,7 +119,7 @@ fn call_tool(db: &Database, default_project: &str, params: Option<&Value>) -> Re
                 bail!("query cannot be empty");
             }
             let limit = args.limit.clamp(1, 50);
-            let project = args.project.as_deref().unwrap_or(default_project);
+            let project = default_project;
             let memories = db.search(project, &args.query, limit)?;
             let text = if memories.is_empty() {
                 "No matching memories found.".to_owned()
@@ -159,7 +157,7 @@ fn call_tool(db: &Database, default_project: &str, params: Option<&Value>) -> Re
             if args.title.trim().is_empty() || args.body.trim().is_empty() {
                 bail!("title and body cannot be empty");
             }
-            let project = args.project.as_deref().unwrap_or(default_project);
+            let project = default_project;
             let memory = db.remember(project, &args.title, &args.body, &args.tags)?;
             json!({
                 "content": [{
@@ -187,8 +185,7 @@ fn tool_list() -> Value {
                     "required": ["query"],
                     "properties": {
                         "query": {"type": "string", "minLength": 1, "maxLength": 2000},
-                        "limit": {"type": "integer", "minimum": 1, "maximum": 50, "default": 10},
-                        "project": {"type": "string", "description": "Optional project key. Defaults to the MCP server working directory."}
+                        "limit": {"type": "integer", "minimum": 1, "maximum": 50, "default": 10}
                     }
                 }
             },
@@ -202,8 +199,7 @@ fn tool_list() -> Value {
                     "properties": {
                         "title": {"type": "string", "minLength": 1, "maxLength": 300},
                         "body": {"type": "string", "minLength": 1, "maxLength": 20000},
-                        "tags": {"type": "array", "items": {"type": "string"}, "maxItems": 20, "default": []},
-                        "project": {"type": "string", "description": "Optional project key. Defaults to the MCP server working directory."}
+                        "tags": {"type": "array", "items": {"type": "string"}, "maxItems": 20, "default": []}
                     }
                 }
             }
@@ -231,11 +227,15 @@ fn parse_db_path() -> Result<PathBuf> {
 
 fn canonical_project() -> Result<String> {
     let current = env::current_dir().context("failed to read current directory")?;
-    Ok(current
+    let mut project = current
         .canonicalize()
-        .unwrap_or(current)
+        .context("failed to canonicalize project path")?
         .to_string_lossy()
-        .replace('\\', "/"))
+        .replace('\\', "/");
+    if cfg!(windows) {
+        project = project.to_lowercase();
+    }
+    Ok(project)
 }
 
 fn error_response(id: Value, code: i32, message: String) -> Value {

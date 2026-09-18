@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 license = "MIT"
 description = "Local-first memory MCP server for coding agents"
-repository = "repository = "https://github.com/OfficialTanishSharma/agentos""
+repository = "https://github.com/OfficialTanishSharma/agentos"
 
 [dependencies]
 anyhow = "1.0"
