@@ -1,6 +1,8 @@
 {
-  "agentos": {
-    "command": "${CLAUDE_PLUGIN_ROOT}/target/release/agentos.exe",
-    "args": []
+  "mcpServers": {
+    "agentos": {
+      "command": "${CLAUDE_PLUGIN_ROOT}/target/release/agentos.exe",
+      "args": []
+    }
   }
 }
