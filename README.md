@@ -249,7 +249,6 @@ Arguments:
 | `title` | string | Yes | Short, searchable memory title |
 | `body` | string | Yes | Full memory content |
 | `tags` | string array | No | Searchable labels |
-| `project` | string | No | Explicit project key; defaults to the server working directory |
 
 ### `memory.search`
 
@@ -280,7 +279,6 @@ Arguments:
 |---|---|---:|---|
 | `query` | string | Yes | Keywords to search for |
 | `limit` | integer | No | Number of results, from 1 to 50; defaults to 10 |
-| `project` | string | No | Explicit project key; defaults to the server working directory |
 
 Search terms are quoted and joined with `OR`. This keeps the FTS query safe and favors useful partial matches, but it is not semantic search.
 
