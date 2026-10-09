@@ -5,6 +5,7 @@
 [![Rust 1.80+](https://img.shields.io/badge/Rust-1.80%2B-000000?logo=rust)](https://www.rust-lang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Protocol: MCP](https://img.shields.io/badge/Protocol-MCP-blue)](https://modelcontextprotocol.io/)
+[![M8ven Score](https://img.shields.io/badge/M8ven_Score-74%2F100_(Grade_C)-4c1?style=flat&logo=shield)](https://m8ven.ai/mcp/officialtanishsharma/agentos)
 [![M8ven Score](https://m8ven.ai/badge/mcp/officialtanishsharma-agentos-1ttzdw)](https://m8ven.ai/mcp/officialtanishsharma-agentos-1ttzdw?s=readme)
 [![OfficialTanishSharma/agentos MCP server](https://glama.ai/mcp/servers/OfficialTanishSharma/agentos/badges/score.svg)](https://glama.ai/mcp/servers/OfficialTanishSharma/agentos)
 
